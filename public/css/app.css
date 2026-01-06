@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Header */
+.header {
+    background: #0f172a;
+    padding: 15px 0;
+}
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    color: #fff;
+}
+.header nav a {
+    color: #fff;
+    margin-left: 15px;
+    text-decoration: none;
+}
+.header .btn {
+    background: #38bdf8;
+    padding: 6px 12px;
+    border-radius: 5px;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(to right, #2563eb, #1e40af);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+.btn-primary {
+    background: #38bdf8;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Features */
+.features {
+    padding: 50px 0;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.card {
+    background: #f8fafc;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Courses */
+.courses {
+    background: #f1f5f9;
+    padding: 50px 0;
+}
+.course-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Footer */
+.footer {
+    background: #0f172a;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+.footer-links a {
+    color: #38bdf8;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* About Hero */
+.about-hero {
+    background: linear-gradient(to right, #1e3a8a, #2563eb);
+    color: white;
+    padding: 70px 0;
+    text-align: center;
+}
+.about-hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+/* About Content */
+.about-content {
+    padding: 60px 0;
+}
+.two-column {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+.about-content h2 {
+    margin-bottom: 10px;
+    color: #1e293b;
+}
+.about-content p {
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Why Us */
+.why-us {
+    background: #f8fafc;
+    padding: 60px 0;
+}
+.why-us h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Stats */
+.stats {
+    background: #0f172a;
+    color: white;
+    padding: 50px 0;
+    text-align: center;
+}
+.stat-box h3 {
+    font-size: 32px;
+    color: #38bdf8;
+}
+.stat-box p {
+    margin-top: 5px;
+}
+
+/* Contact Hero */
+.contact-hero {
+    background: linear-gradient(to right, #0f172a, #1e40af);
+    color: white;
+    padding: 70px 0;
+    text-align: center;
+}
+.contact-hero h1 {
+    font-size: 40px;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 60px 0;
+}
+.contact-info h2,
+.contact-form h2 {
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+.contact-info p {
+    color: #475569;
+    margin-bottom: 20px;
+}
+.contact-info ul {
+    list-style: none;
+}
+.contact-info ul li {
+    margin-bottom: 10px;
+    color: #334155;
+}
+
+/* Contact Form */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #cbd5f5;
+    border-radius: 5px;
+}
+.contact-form button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+/* Courses Hero */
+.courses-hero {
+    background: linear-gradient(to right, #1e40af, #2563eb);
+    color: white;
+    padding: 70px 0;
+    text-align: center;
+}
+.courses-hero h1 {
+    font-size: 40px;
+}
+
+/* Courses Page */
+.courses-page {
+    padding: 60px 0;
+}
+
+/* Filter */
+.course-filter {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.course-filter input,
+.course-filter select {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #cbd5f5;
+    border-radius: 5px;
+}
+
+/* Course Card */
+.course-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+}
+.course-card h3 {
+    margin-bottom: 10px;
+}
+.course-card p {
+    color: #475569;
+    margin-bottom: 15px;
+}
+
+/* Badge */
+.badge {
+    background: #e0f2fe;
+    color: #0284c7;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* Footer */
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.price {
+    font-weight: bold;
+    color: #16a34a;
+}
+
+.course-card {
+    transition: all 0.3s ease;
+}
+
+/* Auth Page */
+.auth-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    padding: 40px 0;
+}
+
+/* Card */
+.auth-card {
+    background: white;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.auth-card h2 {
+    margin-bottom: 10px;
+}
+
+.auth-subtitle {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+/* Inputs */
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #cbd5f5;
+    border-radius: 5px;
+}
+
+/* Button */
+.full-width {
+    width: 100%;
+}
+
+/* Links */
+.auth-links {
+    margin-top: 20px;
+    font-size: 14px;
+}
+.auth-links a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+/* Error */
+.error-text {
+    color: red;
+    margin-bottom: 15px;
+}
+
+/* Auth Page (shared with login) */
+.auth-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f5f9;
+    padding: 40px 0;
+}
+
+.auth-card {
+    background: white;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.auth-card h2 {
+    margin-bottom: 10px;
+}
+
+.auth-subtitle {
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #cbd5f5;
+    border-radius: 5px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.auth-links {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.auth-links a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+}
