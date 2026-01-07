@@ -8,6 +8,12 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+//
+
+
+
+
+//courses api
 Route::get('/courses', [CourseApiController::class, 'index']);
 Route::get('/courses/{id}',[CourseApiController::class,'show']);
 Route::post('courses-add',[CourseApiController::class,'store']);
