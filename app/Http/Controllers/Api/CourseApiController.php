@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\Courses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpKernel\HttpCache\ResponseCacheStrategy;
 
 class CourseApiController extends Controller
 {
@@ -25,4 +26,33 @@ class CourseApiController extends Controller
             'data' => $query->get()
         ]);
     }
+
+    //show particular one courses
+     public function show($id)
+    {
+        $course = Courses::findOrFail($id);
+        return response()->json([
+            'status'=>true,
+            'data'=>$course
+        ]);
+    }
+
+
+   public function store(Request $request)
+{
+    $validated = $request->validate([
+        'title'       => 'required|min:5',
+        'description' => 'required|min:10',
+        'category'    => 'required|min:5',
+        'price'       => 'required|numeric'
+    ]);
+
+    $course = Courses::create($validated);
+
+    return response()->json([
+        'status' => true,
+        'msg'    => 'Record added successfully',
+        'data'   => $course
+    ], 201);
+}
 }

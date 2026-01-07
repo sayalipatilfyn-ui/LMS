@@ -9,3 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/courses', [CourseApiController::class, 'index']);
+Route::get('/courses/{id}',[CourseApiController::class,'show']);
+Route::post('courses-add',[CourseApiController::class,'store']);
