@@ -5,60 +5,49 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class LoginController extends Controller
 {
-    /**
-     * Show login form
-     */
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    /**
-     * Handle login request
-     */
     public function login(Request $request)
     {
-        // 1️⃣ Validate request
+        //Validate input
         $request->validate([
             'email'    => 'required|email',
             'password' => 'required|min:6',
         ]);
 
-        // 2️⃣ Fetch user manually (safe bcrypt check)
-        $user = User::where('email', $request->email)->first();
+        //Attempt login (email + password ONLY)
+        if (Auth::attempt(
+            $request->only('email', 'password'),
+            $request->filled('remember')
+        )) {
+            //Regenerate session (security)
+            $request->session()->regenerate();
 
-        if (!$user) {
-            return back()->with('error', 'Invalid email or password');
+            //Role-based redirect
+            $user = Auth::user();
+
+            if ($user->role === 'admin') {
+                return redirect()->intended(route('admin.dashboard'));
+            }
+
+            // if ($user->role === 'instructor') {
+            //     return redirect()->intended(route('instructor.dashboard'));
+            // }
+
+            //Default → Student
+            return redirect()->intended(route('student.dashboard'));
         }
 
-        // 3️⃣ Verify password (bcrypt safe)
-        if (!Hash::check($request->password, $user->password)) {
-            return back()->with('error', 'Invalid email or password');
-        }
-
-        // 4️⃣ Login user manually
-        Auth::login($user, $request->filled('remember'));
-
-        // 5️⃣ Regenerate session
-        $request->session()->regenerate();
-
-        /**
-         * 🔥 IMPORTANT:
-         * Redirects user back to:
-         * - enroll page (if came from enroll)
-         * - otherwise courses page
-         */
-        return redirect()->route('enrollment-success');
+        //Login failed
+        return back()->with('error', 'Invalid email or password');
     }
-
-    /**
-     * Logout user
-     */
+    
     public function logout(Request $request)
     {
         Auth::logout();

@@ -10,44 +10,31 @@ use App\Models\User;
 
 class RegisterController extends Controller
 {
-    /**
-     * Show register form
-     */
     public function showRegisterForm()
     {
         return view('auth.register');
     }
-
-    /**
-     * Handle user registration
-     */
     public function register(Request $request)
     {
-        // 1️⃣ Validate input
+        //Validate input
         $request->validate([
             'name'                  => 'required|string|min:2|max:100',
             'email'                 => 'required|email|unique:users,email',
             'password'              => 'required|min:6|confirmed',
         ]);
 
-        // 2️⃣ Create user (bcrypt password)
+        //Create user (bcrypt password)
         $user = User::create([
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        // 3️⃣ Login user automatically
+        //Login user automatically
         Auth::login($user);
 
-        // 4️⃣ Regenerate session (security)
+        //Regenerate session (security)
         $request->session()->regenerate();
-
-        /**
-         * 🔥 IMPORTANT:
-         * Redirect to intended URL
-         * (Enroll → Register → Enroll works)
-         */
-        return redirect()->intended(route('courses'));
+        return redirect()->intended(route('login'));
     }
 }
