@@ -377,55 +377,58 @@
     font-weight: 500;
 }
 
-/* Dashboard */
-.dashboard {
-    padding: 60px 0;
-    background: #f8fafc;
-}
-
+/* Dashboard Header */
 .dashboard-header {
-    margin-bottom: 30px;
-}
-
-.dashboard-header h2 {
-    font-size: 28px;
-}
-
-.dashboard-header p {
-    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
 }
 
 /* Stats */
-.dashboard-stats .card {
+.stat-card {
     text-align: center;
 }
-
-/* Section */
-.dashboard-section {
-    margin-top: 40px;
+.stat-number {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
-.dashboard-section h3 {
+/* Section Header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
 }
-
-/* Progress Bar */
-.progress-bar {
-    background: #e5e7eb;
-    height: 8px;
-    border-radius: 5px;
-    margin: 10px 0 15px;
-}
-.progress-bar span {
-    display: block;
-    height: 100%;
-    background: #2563eb;
-    border-radius: 5px;
+.section-header a {
+    color: #2563eb;
+    font-size: 14px;
+    text-decoration: none;
 }
 
-/* Course Card */
-.course-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+/* Course Meta */
+.course-meta {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+/* Progress Info */
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+/* Quick Actions */
+.quick-actions .action-card {
+    text-align: center;
+    font-weight: 500;
+}
+.quick-actions .action-card a {
+    text-decoration: none;
+    color: #1e293b;
 }
