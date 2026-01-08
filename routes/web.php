@@ -24,10 +24,11 @@ Route::get('/enroll/{id}', [CourseController::class, 'enroll'])
     ->middleware('auth')
     ->name('enroll');
 
+    ##############################
 Route::get('/enrollment-success', function () {
     return view('enrollment-success');
 })->name('enrollment.success');
-
+###################################
 
 //admin Dashboard
 Route::get('/dashboard', [AdminController::class, 'index'])
@@ -54,6 +55,6 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])
     ->name('register');
 
 Route::post('/register', [RegisterController::class, 'register'])
-    ->name('register.submit');
+->name('register.submit');
 
 

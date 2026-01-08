@@ -13,7 +13,7 @@
             More Courses
         </a><br><br>
 <br>
-        <a href="#" class="btn-primary full-width">
+        <a href="{{ route('student.dashboard') }}" class="btn-primary full-width">
             My Courses
         </a>
     </div>

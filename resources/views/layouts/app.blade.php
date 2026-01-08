@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @livewireStyles
     <meta charset="UTF-8">
     <title>@yield('title', 'LMS')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
+
 <body>
 
 @include('layouts.header')
@@ -14,6 +16,7 @@
 </main>
 
 @include('layouts.footer')
+@livewireScripts
 
 </body>
 </html>
