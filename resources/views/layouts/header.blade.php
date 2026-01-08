@@ -33,7 +33,7 @@
                 {{-- Student --}}
                 @if(auth()->user()->role === 'student')
                     <a href="{{ route('student.dashboard') }}" class="btn">
-                        My Profile
+                        {{ auth()->user()->name }}
                     </a>
                 @endif
 

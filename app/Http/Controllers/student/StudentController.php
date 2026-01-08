@@ -29,7 +29,7 @@ class StudentController extends Controller
             ->count();
 
         $inProgress = Progress::where('user_id', $userId)
-            ->whereBetween('percentage', [1, 100])
+            ->whereBetween('percentage', [1, 99])
             ->count();
 
         $notStarted = $totalCourses - ($completed + $inProgress);
@@ -41,7 +41,7 @@ class StudentController extends Controller
                 $q->select('course_id')
                   ->from('progress')
                   ->where('user_id', $userId)
-                  ->whereBetween('percentage', [1, 100]);
+                  ->whereBetween('percentage', [1, 99]);
             })
             ->get();
 

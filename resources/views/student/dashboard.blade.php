@@ -27,7 +27,7 @@
             </div>
 
             <div class="card stat-card">
-                <h3>✅ Completed</h3>
+                <h3>Completed</h3>
                 <p class="stat-number">{{ $completed }}</p>
             </div>
 
@@ -37,6 +37,7 @@
             </div>
         </div>
         <br>
+        
         <!-- In Progress Courses ONLY -->
         <div class="dashboard-section">
             <h3>Courses In Progress</h3>
