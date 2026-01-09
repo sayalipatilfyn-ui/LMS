@@ -16,7 +16,7 @@
         <div class="card-body">
             <h5>Manage Cources</h5>
             <h2>{{ $courseCount }}</h2>
-            <a href='#'>View Cources</a>
+            <a href={{ route('admin.coursesView') }}>View Cources</a>
         </div>
     </div>
 

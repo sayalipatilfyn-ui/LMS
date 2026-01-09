@@ -13,7 +13,7 @@ class AdminController extends Controller
     {
         return view('admin.Admindashboard', [
             'userCount' => User::count(),
-            'courseCount' =>Courses::count()
+           'courseCount' =>Courses::count()
         ]);
     }
 
@@ -21,5 +21,10 @@ class AdminController extends Controller
     {
         $users = User::latest()->get();
         return view('admin.users', compact('users'));
+    }
+
+    public function courses(){
+        $courses = Courses::latest()->get();
+        return view('admin.courseView',compact('courses'));
     }
 }

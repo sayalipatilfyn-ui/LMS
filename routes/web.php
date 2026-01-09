@@ -38,6 +38,10 @@ Route::middleware(['auth'])->group(function () {
 
       Route::get('/users', [AdminController::class, 'users'])
         ->name('admin.users');
+
+        //*course Display
+            Route::get('/coursesView', [AdminController::class, 'courses'])
+        ->name('admin.coursesView');
 });
 
 
@@ -63,5 +67,8 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])
 
 Route::post('/register', [RegisterController::class, 'register'])
 ->name('register.submit');
+
+
+
 
 
