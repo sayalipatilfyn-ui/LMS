@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use App\Models\User;
 use App\Models\Courses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpKernel\HttpCache\ResponseCacheStrategy;
 
 class CourseApiController extends Controller
@@ -25,6 +26,10 @@ class CourseApiController extends Controller
             'status' => true,
             'data' => $query->get()
         ]);
+        return response()->json([
+            'status' => true,
+            'data' => User::all()
+        ]);
     }
 
     //show particular one courses
@@ -37,22 +42,47 @@ class CourseApiController extends Controller
         ]);
     }
 
-
-   public function store(Request $request)
+public function createCourse(Request $request)
 {
     $validated = $request->validate([
-        'title'       => 'required|min:5',
-        'description' => 'required|min:10',
-        'category'    => 'required|min:5',
-        'price'       => 'required|numeric'
+        'title'       => 'required|string|min:5',
+        'description' => 'required|string|min:10',
+        'category'    => 'required|string|min:3',
+        'price'       => 'required|numeric|min:0',
     ]);
 
     $course = Courses::create($validated);
 
     return response()->json([
         'status' => true,
-        'msg'    => 'Record added successfully',
-        'data'   => $course
+        'msg'    => 'Course created successfully',
+        'data'   => $course,
     ], 201);
 }
+            
+
+   public function createRegister(Request $request)
+{
+
+     $validated = $request->validate([
+            'name'     => 'required|string|min:3',
+            'email'    => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'role'     => 'required|string'
+        ]);
+
+        $user = User::create([
+            'name'     => $validated['name'],
+            'email'    => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'role'     => $validated['role'],
+        ]);
+
+        return response()->json([
+            'status' => true,
+            'msg'    => 'User created successfully',
+            'data'   => $user
+        ], 201);
+}
+
 }

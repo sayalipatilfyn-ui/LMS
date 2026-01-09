@@ -59,3 +59,4 @@ class LoginController extends Controller
             ->with('success', 'Logged out successfully');
     }
 }
+
