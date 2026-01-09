@@ -432,3 +432,57 @@
     text-decoration: none;
     color: #1e293b;
 }
+
+
+.usersv {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.users h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+/* Table */
+.users table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.users thead {
+    background-color: #2f3542;
+    color: #ffffff;
+}
+
+.users thead th {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.users tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 14px;
+}
+
+.users tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.users tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.users tbody td:nth-child(3) {
+    color: #1e90ff;
+}
+
+.users tbody td:first-child {
+    font-weight: bold;
+    width: 70px;
+}
