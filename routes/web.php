@@ -13,7 +13,7 @@ use App\Http\Controllers\student\StudentController;
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-
+ 
 //contact Page
 Route::post('/contact', [ContactController::class, 'add'])->name('contact.add');
 
@@ -31,8 +31,15 @@ Route::get('/enrollment-success', function () {
 ###################################
 
 //admin Dashboard
-Route::get('/dashboard', [AdminController::class, 'index'])
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/dashboard', [AdminController::class, 'index'])
             ->name('admin.dashboard');
+
+      Route::get('/users', [AdminController::class, 'users'])
+        ->name('admin.users');
+});
+
 
 //student dashboard
 Route::get('/stud-dashboard',[StudentController::class,'index'])

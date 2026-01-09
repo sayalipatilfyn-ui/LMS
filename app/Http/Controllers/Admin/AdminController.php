@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Courses;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    public function index(){
-        return view('admin.Admindashboard');
+    public function index()
+    {
+        return view('admin.Admindashboard', [
+            'userCount' => User::count(),
+            'courseCount' =>Courses::count()
+        ]);
+    }
+
+    public function users()
+    {
+        $users = User::latest()->get();
+        return view('admin.users', compact('users'));
     }
 }
