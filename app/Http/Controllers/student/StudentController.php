@@ -8,7 +8,7 @@ use App\Models\Enrollment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -58,8 +58,8 @@ class StudentController extends Controller
         ));
     }
 
-    public function update($id){
-        $student = User::findOrFail($id);
+    public function update(){
+        $student = User::findOrFail(Auth::id());
 
         return view('student.edit', compact('student'));
     }
@@ -67,15 +67,20 @@ class StudentController extends Controller
     public function studentUpdate(Request $request,$id){
         
         $student = User::findOrFail($id);
-
-        $validate=$request->validate([
+        $val=$request->validate([
             'name'     => 'required|string|max:255',
             'email'    => 'required|email|unique:users,email,' . $student->id,
             'password' => 'nullable|min:6',
         ]);
 
-        $student->update($validate);
-        return redirect()->back()->with('success','Record updated successfully..');
+         if (empty($val['password'])) {
+        unset($val['password']);
+    } else {
+        $val['password'] = Hash::make($val['password']);
+    }
+
+        $student->update($val);
+        return redirect()->route('student.dashboard')->with('success','Profile updated successfully');
 
     }
 

@@ -81,5 +81,5 @@ class UserApiController extends Controller
             'msg' => 'User deleted successfully',
         ]);
 
-
+    }
 }
