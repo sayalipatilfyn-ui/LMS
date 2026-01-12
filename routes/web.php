@@ -6,6 +6,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\student\StudentController;
 
@@ -17,7 +18,7 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 //contact Page
 Route::post('/contact', [ContactController::class, 'add'])->name('contact.add');
 
-//courses 
+//for student courses 
 Route::get('/courses', [CourseController::class, 'index'])->name('courses');
 Route::get('/courses/{id}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('/enroll/{id}', [CourseController::class, 'enroll'])
@@ -34,15 +35,19 @@ Route::get('/enrollment-success', function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', [AdminController::class, 'index'])
-            ->name('admin.dashboard');
+    ->name('admin.dashboard');
 
-      Route::get('/users', [AdminController::class, 'users'])
-        ->name('admin.users');
+    Route::get('/users', [AdminController::class, 'users'])
+    ->name('admin.users');
 
         //*course Display
-            Route::get('/coursesView', [AdminController::class, 'courses'])
-        ->name('admin.coursesView');
+    Route::get('/coursesView', [AdminController::class, 'courses'])
+    ->name('admin.coursesView');
+    
+    Route::get('/NewCourses',[AdminController::class,'NewCourses'])->name('courses.add');
+    Route::post('/storeCourses',[AdminController::class,'storeCourse'])->name('admin.addCourses');
 });
+
 
 
 //student dashboard

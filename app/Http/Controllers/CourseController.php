@@ -34,21 +34,6 @@ class CourseController extends Controller
         return view('course-details', compact('course'));
     }
 
-    // add course through admin 
-    public function store(Request $request){
-        $request->validate([
-            'title'=>"required|min:5",
-            'discription'=>"required|min:10",
-            'category'=>"required|min:5",
-            'price'=>"required"
-        ]);
-
-        Courses::create($request->all());
-        return redirect()->back()->with("success","product added successfully");
-
-    }
-
-
     // enroll any courses
         public function enroll(Request $request, $courseId)
     {

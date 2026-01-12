@@ -7,9 +7,16 @@
 
 @section('content')
 
+<br>
+<a href="{{ route('courses.add') }}" class="btn btn-primary">
+    Add Courses
+</a>
+
+
+<br><br>
 <div>
     <h3>Courses</h3>
-
+    <br>
     <table class="users">
         <thead>
             <tr>

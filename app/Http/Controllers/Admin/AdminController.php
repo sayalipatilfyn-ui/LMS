@@ -27,4 +27,23 @@ class AdminController extends Controller
         $courses = Courses::latest()->get();
         return view('admin.courseView',compact('courses'));
     }
+
+     public function NewCourses(){
+        return view('admin.NewCourses');
+    }
+
+    public function storeCourse(Request $request)
+    {
+        $request->validate([
+            'title'       => 'required|string|max:255',
+            'description' => 'required',
+            'category'    => 'required|string|max:255',
+            'price'       => 'required|numeric|min:0',
+        ]);
+
+        Courses::create($request->all());
+
+        return redirect()->back()
+            ->with('success', 'Course added successfully!');
+    }
 }
