@@ -14,6 +14,8 @@ Route::get('/user', function (Request $request) {
 Route::get('/users', [UserApiController::class, 'index']);
 Route::get('/users/{id}', [UserApiController::class, 'show']);
 Route::post('/users-add', [UserApiController::class, 'create']);
+Route::put('/update-users/{id}', [UserApiController::class, 'updateUsers']);
+Route::delete('/delete-course/{id}', [UserApiController::class, 'deleteUsers']);
 
 
 
@@ -21,4 +23,7 @@ Route::post('/users-add', [UserApiController::class, 'create']);
 Route::get('/courses', [CourseApiController::class, 'index']);
 Route::get('/courses/{id}',[CourseApiController::class,'show']);
 Route::post('/create',[CourseApiController::class,'createCourse']);
+Route::put('/update-courses/{id}',[CourseApiController::class,'updateCourse']);
+Route::delete('/delete-course/{id}',[CourseApiController::class,'deleteCourse']);
+
 

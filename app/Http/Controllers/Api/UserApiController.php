@@ -48,4 +48,38 @@ class UserApiController extends Controller
             'data'   => $user
         ], 201);
 }
+
+       public function updateUsers(Request $request, $id){
+                $user = User::find($id);
+                $validate = $request->validate([
+                    'name' => 'required|string|min:3',
+                    'email' => 'required|email|unique:users,email,'.$user->id,
+                    'password' => 'nullable|min:6',
+                    'role' => 'required|string'
+                ]);
+                $requestData = [
+                    'name' => $validate['name'],
+                    'email' => $validate['email'],
+                    'role' => $validate['role']
+                ];
+                if(!empty($validate['password'])){
+                    $requestData['password'] = Hash::make($validate['password']);
+                }
+                $user->update($requestData);
+                return response()->json([
+                    'status' => true,
+                    'msg' => 'User updated successfully',  
+                    'data' => $user,
+                    ]);
+       }
+
+    public function deleteUsers($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response()->json([
+            'status' => true,
+            'msg' => 'User deleted successfully',
+        ]);
+
+
 }
