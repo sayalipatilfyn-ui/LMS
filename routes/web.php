@@ -51,9 +51,13 @@ Route::middleware(['auth'])->group(function () {
 
 
 //student dashboard
-Route::get('/stud-dashboard',[StudentController::class,'index'])
-->name('student.dashboard');
+Route::middleware(['auth'])->group(function(){
+    Route::get('/stud-dashboard',[StudentController::class,'index'])
+    ->name('student.dashboard');
 
+    Route::get('/stud-edit/{id}',[StudentController::class,'update'])->name('student.edit');
+    Route::post('studentUpdate/{id}',[StudentController::class,'studentUpdate'])->name('students.update');
+});
 
 //login
 Route::get('/login', [LoginController::class, 'showLoginForm'])

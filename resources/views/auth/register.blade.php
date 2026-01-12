@@ -9,7 +9,11 @@
 
         <h2>Create Your Account</h2>
         <p class="auth-subtitle">Join MyLMS and start learning today</p>
-
+         @if(session('success'))
+                <p style="color: green; margin-bottom: 15px;">
+                         {{ session('success') }}
+                </p>
+        @endif
         <form method="POST" action="{{ route('register.submit') }}">
             @csrf
 
