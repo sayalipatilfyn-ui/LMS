@@ -55,6 +55,29 @@ public function createCourse(Request $request)
         'data'   => $course,
     ], 201);
 }
-            
+    
+public function updateCourse(Request $request,$id){
+    $course = Courses::findOrFail($id);
 
+    $val = $request->validate([
+        'title' => 'sometimes|required|string|min:5',
+        'description' => 'sometimes|required|string|min:10',
+        'category' => 'sometimes|required|string|min:3',
+        'price' => 'sometimes|required|numeric|min:0',
+    ]);
+    $course->update($val);
+    return response()->json([
+        'status' => true,
+        'msg' => 'Course updated successfully',
+        'data' => $course,
+    ]);
+}
+
+public function deleteCourse($id){
+    $course = Courses::findOrFail($id);
+    $course->delete();
+    return response()->json([
+        'status' => true,
+        'msg' => 'Course deleted successfully',
+    ]);
 }
