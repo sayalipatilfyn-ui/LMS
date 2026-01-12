@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Models\User;
+use App\Models\Progress;
+use App\Models\Enrollment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Enrollment;
-use App\Models\Progress;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 
 class StudentController extends Controller
 {
@@ -54,4 +57,26 @@ class StudentController extends Controller
             'inProgressCourses'
         ));
     }
+
+    public function update($id){
+        $student = User::findOrFail($id);
+
+        return view('student.edit', compact('student'));
+    }
+
+    public function studentUpdate(Request $request,$id){
+        
+        $student = User::findOrFail($id);
+
+        $validate=$request->validate([
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|email|unique:users,email,' . $student->id,
+            'password' => 'nullable|min:6',
+        ]);
+
+        $student->update($validate);
+        return redirect()->back()->with('success','Record updated successfully..');
+
+    }
+
 }

@@ -31,7 +31,7 @@
                 required
             >
 
-            <button href="{{ route('courses') }}" type="submit" class="btn-primary full-width">
+            <button href="{{ route('student.dashboard') }}" type="submit" class="btn-primary full-width">
                 Login
             </button>
         </form>

@@ -13,6 +13,11 @@
             <h4>Add New Course</h4>
         </div>
 
+         @if(session('success'))
+                <p style="color: green; margin-bottom: 15px;">
+                         {{ session('success') }}
+                </p>
+        @endif
         <div class="card-body">
             <form method="POST" action="{{ route('admin.addCourses') }}">
                 @csrf
