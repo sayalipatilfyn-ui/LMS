@@ -66,7 +66,7 @@ public function updateCourse(Request $request,$id){
         'price' => 'sometimes|required|numeric|min:0',
     ]);
     $course->update($val);
-    return response()->json([
+    return response()->json([ 
         'status' => true,
         'msg' => 'Course updated successfully',
         'data' => $course,
@@ -80,4 +80,5 @@ public function deleteCourse($id){
         'status' => true,
         'msg' => 'Course deleted successfully',
     ]);
+}
 }

@@ -90,7 +90,7 @@
                     <a href="#">🏆 Download Certificates</a>
                 </div>
                 <div class="card action-card">
-                    <a href="#">👤 Edit Profile</a>
+                    <a href="{{ route('student.edit') }}">👤 Edit Profile</a>
                 </div>
             </div>
         </div>

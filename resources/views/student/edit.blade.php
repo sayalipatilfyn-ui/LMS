@@ -10,8 +10,6 @@
         </div>
 
         <div class="card-body">
-            {{ dd($student) }}
-
             <form method="POST" action="{{ route('students.update', $student->id) }}">
                 @csrf
                 @method('PUT')
