@@ -20,7 +20,7 @@ class ContactController extends Controller
         ]);
 
         Contact::create($request->all());
-        return redirect()->back()->with('success','we will reach you soon..');
+        return redirect()->back()->with('success','Thank you for your responce..');
 
     }
 }

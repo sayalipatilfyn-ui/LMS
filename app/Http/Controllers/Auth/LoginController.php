@@ -42,6 +42,7 @@ class LoginController extends Controller
 
             //Default → Student
             return redirect()->intended(route('student.dashboard'));
+            
         }
 
         //Login failed
