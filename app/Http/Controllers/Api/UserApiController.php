@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 
 class UserApiController extends Controller
@@ -18,11 +19,16 @@ class UserApiController extends Controller
    
     public function show($id)
     {
+        // $user = User::findOrFail($id);
+        // return response()->json([
+        //     'status'=>true,
+        //     'data'=>$user
+        // ]);
+
         $user = User::findOrFail($id);
-        return response()->json([
-            'status'=>true,
-            'data'=>$user
-        ]);
+
+        return new UserResource($user);
+        
     }
 
      public function create(Request $request)
@@ -73,13 +79,15 @@ class UserApiController extends Controller
                     ]);
        }
 
-    public function deleteUsers($id){
-        $user = User::findOrFail($id);
-        $user->delete();
-        return response()->json([
-            'status' => true,
-            'msg' => 'User deleted successfully',
-        ]);
+        public function deleteUsers($id){
+            $user = User::findOrFail($id);
+        //  $user->SoftDelete();
+            $user->enrollments()->delete(); // Delete related enrollments             
+            $user->delete();
+            return response()->json([
+                'status' => true,
+                'msg' => 'User deleted successfully',
+            ]);
 
-    }
+        }
 }
