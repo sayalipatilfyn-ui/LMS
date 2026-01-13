@@ -15,7 +15,7 @@ Route::get('/users', [UserApiController::class, 'index']);
 Route::get('/users/{id}', [UserApiController::class, 'show']);
 Route::post('/users-add', [UserApiController::class, 'create']);
 Route::put('/update-users/{id}', [UserApiController::class, 'updateUsers']);
-Route::delete('/delete-course/{id}', [UserApiController::class, 'deleteUsers']);
+Route::delete('/delete-users/{id}', [UserApiController::class, 'deleteUsers']);
 
 
 
