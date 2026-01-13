@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Courses;
 use App\Models\Enrollment;
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\EnrollMail;
 
 class CourseController extends Controller
 {
@@ -34,15 +36,27 @@ class CourseController extends Controller
         return view('course-details', compact('course'));
     }
 
-    // enroll any courses
-        public function enroll(Request $request, $courseId)
-    {
-        Enrollment::create([
-            'user_id'   => $request->user()->id,
-            'course_id'=> $courseId
-        ]);
+public function enroll($id)
+{
+    $course = Courses::findOrFail($id);
 
-        return redirect()->route('enrollment.success')->with('success', 'Enrolled successfully!');
-    }
+    // (Optional) Save enrollment
+    Enrollment::firstOrCreate([
+        'user_id' => auth()->id(),
+        'course_id' => $course->id,
+    ]);
+
+    $data = [
+        'name' => auth()->user()->name,
+        'message' => 'You have successfully enrolled in ' . $course->title,
+    ];
+
+    Mail::to(auth()->user()->email)
+        ->send(new EnrollMail($data));
+
+    return redirect()->route('enrollment.success')
+                     ->with('success', 'Enrolled successfully! Email sent.');
+}
+
 
 }

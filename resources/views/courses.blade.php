@@ -42,15 +42,13 @@
                     <p>{{ $course->description }}</p>
                     <span class="badge">{{ ucfirst($course->category) }}</span>
 
-                    <div class="course-footer">
-                        <span class="price">
-                            {{ $course->price > 0 ? '₹'.$course->price : 'Free' }}
-                        </span>
-                       <a href="{{ route('enroll', $course->id) }}" class="btn-primary">
-                                Enroll Course
-                      </a>
+                    <form action="{{ route('mail.enroll', $course->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn-primary">
+                                    Enroll Course
+                                </button>
+                            </form>
 
-                    </div>
                 </div>
             @empty
                 <p style="color:red">No courses found.</p>
