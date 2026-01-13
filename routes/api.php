@@ -24,6 +24,4 @@ Route::get('/courses', [CourseApiController::class, 'index']);
 Route::get('/courses/{id}',[CourseApiController::class,'show']);
 Route::post('/create',[CourseApiController::class,'createCourse']);
 Route::put('/update-courses/{id}',[CourseApiController::class,'updateCourse']);
-Route::delete('/delete-course/{id}',[CourseApiController::class,'deleteCourse']);
-
-
+Route::delete('/delete-courses/{id}',[CourseApiController::class,'deleteCourse']);
