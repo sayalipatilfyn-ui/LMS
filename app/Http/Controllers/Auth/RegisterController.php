@@ -33,6 +33,9 @@ class RegisterController extends Controller
         //Login user automatically
         Auth::login($user);
 
+        $user->createToken('register-token')->plainTextToken;
+        
+        
         //Regenerate session (security)
         $request->session()->regenerate();
         return redirect()->intended(route('login'));

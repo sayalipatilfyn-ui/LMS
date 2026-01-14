@@ -10,6 +10,11 @@
         </div>
 
         <div class="card-body">
+               @if(session('success'))
+                <p style="color: green; margin-bottom: 15px;">
+                         {{ session('success') }}
+                </p>
+            @endif
             <form method="POST" action="{{ route('students.update', $student->id) }}">
                 @csrf
                 @method('PUT')

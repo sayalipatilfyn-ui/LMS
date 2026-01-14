@@ -31,6 +31,7 @@ class LoginController extends Controller
 
             //Role-based redirect
             $user = Auth::user();
+            $user->createToken('login-token')->plainTextToken;
 
             if ($user->role === 'admin') {
                 return redirect()->intended(route('admin.dashboard'));
