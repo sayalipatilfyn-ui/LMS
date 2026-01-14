@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class LoginController extends Controller
 {
     public function showLoginForm()
     {
+        $user=Cache::remember('users-login-cache', now()->addMinutes(10), function () {
+            return User::all();
+        });
         return view('auth.login');
     }
 

@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 
 class RegisterController extends Controller
 {
     public function showRegisterForm()
     {
+        $user=Cache::remember('users-register-cache', now()->addMinutes(10), function () {
+            return User::all();
+        });
+
         return view('auth.register');
     }
     public function register(Request $request)

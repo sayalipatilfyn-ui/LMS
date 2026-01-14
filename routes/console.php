@@ -16,3 +16,5 @@ Artisan::command('inspire', function () {
 
     $this->info('All caches cleared');
 })->purpose('Clear all application caches');
+
+Schedule::command('course-minute-schedule')->everyMinute();
