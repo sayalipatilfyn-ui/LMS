@@ -77,11 +77,10 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])
 Route::post('/register', [RegisterController::class, 'register'])
 ->name('register.submit');
 
-
-//^send-enrollment Mail
 Route::post('/enroll/{id}', [CourseController::class, 'enroll'])
      ->name('mail.enroll')
      ->middleware('auth');
+
 
 
 
